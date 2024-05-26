@@ -1,0 +1,26 @@
+import axios from 'axios'
+const API_KEY = process.env.MOVIE_API_KEY || ''
+const BASE_URL = process.env.MOVIE_BASE_URL || ''
+
+const getMoviesFromApi = async (page) => {
+  try {
+    const params = {}
+
+    if (page) {
+      params.page = page
+    }
+
+    const headers = {
+      Authorization: `Bearer ${API_KEY}`,
+      accept: 'application/json'
+    }
+
+    const response = await axios.get(BASE_URL, { params, headers })
+    return response.data
+  } catch (error) {
+    console.error('Error fetching movies from TMDb:', error)
+    throw new Error('Could not fetch movies')
+  }
+}
+
+export default { getMoviesFromApi }
