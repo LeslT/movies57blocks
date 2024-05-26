@@ -5,6 +5,7 @@ import AuthLayout from './layouts/AuthLayout'
 import LoginView from './views/auth/LoginView'
 import FavoriteMovies from './views/movies/FavoriteMovies'
 import RegisterView from './views/auth/RegisterView'
+import MovieDetails from './views/movies/MovieDetails'
 
 export default function Router() {
     return (
@@ -12,7 +13,8 @@ export default function Router() {
             <Routes>
                 <Route element={<AppLayout/>}>
                     <Route path='/' element={<DashboardView/>} index/>
-                    <Route path='/favorites' element={<FavoriteMovies/>} index/>
+                    <Route path='/favorites' element={<FavoriteMovies/>}/>
+                    <Route path='/details' element={<MovieDetails/>}/>
                 </Route>
                 <Route element={<AuthLayout/>}>
                     <Route path='/login' element={<LoginView/>} />

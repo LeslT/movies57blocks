@@ -52,24 +52,6 @@ export default function RegisterView() {
             <ErrorMessage>{errors.email.message}</ErrorMessage>
           )}
         </div>
-
-        <div className="flex flex-col gap-5">
-          <label
-            className="font-normal text-2xl"
-          >Full Name</label>
-          <input
-            type="name"
-            placeholder="register name"
-            className="w-full p-3  border-gray-300 border"
-            {...register("name", {
-              required: "Name is required",
-            })}
-          />
-          {errors.name && (
-            <ErrorMessage>{errors.name.message}</ErrorMessage>
-          )}
-        </div>
-
         <div className="flex flex-col gap-5">
           <label
             className="font-normal text-2xl"
