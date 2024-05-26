@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 import { validateEmail, validatePassword } from '../utils/validator.js'
 import userRepository from '../repository/userRepository.js'
 
@@ -26,6 +27,33 @@ const register = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  const { email, password } = req.body
+
+  if (!validateEmail(email)) {
+    return res.status(400).json({ message: 'Invalid email address' })
+  }
+
+  const existingUser = await userRepository.findByEmail(email)
+  if (!existingUser) {
+    return res.status(400).json({ message: 'Email not registered' })
+  }
+
+  if (!validatePassword(password)) {
+    return res.status(400).json({ message: 'Invalid password format' })
+  }
+
+  const passwordMatch = await bcrypt.compare(password, existingUser.password)
+  if (!passwordMatch) {
+    return res.status(400).json({ message: 'Incorrect password' })
+  }
+
+  const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '20m' })
+
+  return res.status(200).json({ message: 'Login successful', token })
+}
+
 export default {
-  register
+  register,
+  login
 }
