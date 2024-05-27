@@ -37,7 +37,7 @@ const getDetailsFromApi = async (id) => {
     const response = await axios.get(route, { headers })
     return response.data
   } catch (error) {
-    console.error('Error fetching movies from TMDb:', error)
+    console.error('Error fetching movies from TMDb:', error.message || error.stack)
     throw new Error('Could not fetch movies')
   }
 }
