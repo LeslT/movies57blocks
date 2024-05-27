@@ -36,6 +36,42 @@ const getMovies = async (req, res) => {
   }
 }
 
+const getMoviesById = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    logger.info('', {
+      timestamp: new Date(),
+      service: 'MOVIE_CONTROLLER',
+      action: 'GET_MOVIES_ID_REQ',
+      type: 'INFO',
+      message: 'A user request the detail for one movie',
+      log: id
+    })
+    const movie = await moviesServices.getDetailsFromApi(id)
+    logger.info('', {
+      timestamp: new Date(),
+      service: 'MOVIE_CONTROLLER',
+      action: 'GET_MOVIES_ID_RES',
+      type: 'INFO',
+      message: 'Movie are fetched successfully',
+      log: id
+    })
+    res.status(200).json({ message: 'Movies fetched successfully', movie })
+  } catch (error) {
+    logger.info('', {
+      timestamp: new Date(),
+      service: 'MOVIE_CONTROLLER',
+      action: 'GET_MOVIES_ID_REQ',
+      type: 'ERROR',
+      message: 'Movies are fetched successfully',
+      log: error.message || error.stack
+    })
+    res.status(500).json({ error: error.message })
+  }
+}
+
 export default {
-  getMovies
+  getMovies,
+  getMoviesById
 }
