@@ -68,29 +68,29 @@ const updateUserByEmail = async (req, res) => {
 }
 
 const getFavoriteMovies = async (req, res) => {
-  const { email } = req.params
+  const { id } = req.params
   logger.info('', {
     timestamp: new Date(),
     service: 'USER_CONTROLLER',
     action: 'GET_FAVORITES_REQ',
     type: 'INFO',
     message: 'User updated successfully',
-    log: email
+    log: id
   })
-  if (!email) {
+  if (!id) {
     logger.info('', {
       timestamp: new Date(),
       service: 'USER_CONTROLLER',
       action: 'GET_FAVORITES_RES',
       type: 'ERROR',
       message: 'Email is required',
-      log: email
+      log: id
     })
-    return res.status(400).json({ message: 'Email is required' })
+    return res.status(400).json({ message: 'Id is required' })
   }
 
   try {
-    const user = await userRepository.findByEmail(email)
+    const user = await userRepository.findById(id)
     if (!user) {
       logger.info('', {
         timestamp: new Date(),
@@ -98,7 +98,7 @@ const getFavoriteMovies = async (req, res) => {
         action: 'GET_FAVORITES_RES',
         type: 'ERROR',
         message: 'User not found',
-        log: email
+        log: id
       })
       return res.status(404).json({ message: 'User not found' })
     }

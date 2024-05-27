@@ -12,8 +12,7 @@ export default function FavoriteMovies() {
     queryFn: getFavorites(userId),
     retry: false
   });
-console.log(data)
-console.log(userId)
+  
   return (
     <>
       <h1 className="text-6xl font-extrabold">Favorites</h1>
