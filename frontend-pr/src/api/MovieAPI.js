@@ -4,8 +4,9 @@ import { isAxiosError } from "axios";
 
 export async function getMovies() {
     try {
-        const { data } = await api('/movies')
-        return data
+        const { data } = await api('/movies/list')
+        console.log(data)
+        return data.movies.results
     } catch (error) {
         if(isAxiosError(error) && error.response){
             throw new Error(error.response.data.error)
@@ -39,7 +40,7 @@ export async function addMovieToFavorites(formData, projectId ) {
 export async function deleteMovieFromFavorites(id) {
     try {
         const { data } = await api.delete(`/movies/${id}`)
-        return data
+        return data.movies.results
     } catch (error) {
         if(isAxiosError(error) && error.response){
             throw new Error(error.response.data.error)
