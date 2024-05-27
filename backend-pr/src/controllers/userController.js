@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs'
 import logger from '../lib/log.js'
 
 const updateUserByEmail = async (req, res) => {
-  const { email } = req.params
+  const { id } = req.params
   const updates = req.body
 
   try {
@@ -15,8 +15,19 @@ const updateUserByEmail = async (req, res) => {
       action: 'UPDATE_USER_REQ',
       type: 'INFO',
       message: 'A update request is received from a user',
-      log: { email, updates }
+      log: { id, updates }
     })
+    if (!id) {
+      logger.info('', {
+        timestamp: new Date(),
+        service: 'USER_CONTROLLER',
+        action: 'UPDATE_USER_RES',
+        type: 'ERROR',
+        message: 'id cannot be updated',
+        log: updates
+      })
+      return res.status(400).json({ error: 'Email cannot be updated' })
+    }
     if (updates.email) {
       logger.info('', {
         timestamp: new Date(),
@@ -24,7 +35,7 @@ const updateUserByEmail = async (req, res) => {
         action: 'UPDATE_USER_RES',
         type: 'ERROR',
         message: 'Email cannot be updated',
-        log: { email, updates }
+        log: updates
       })
       return res.status(400).json({ error: 'Email cannot be updated' })
     }
@@ -37,21 +48,21 @@ const updateUserByEmail = async (req, res) => {
           action: 'UPDATE_USER_RES',
           type: 'ERROR',
           message: 'Invalid password',
-          log: { email, updates }
+          log: updates
         })
         return res.status(400).json({ error: 'Invalid password' })
       }
       const hashedPassword = await bcrypt.hash(updates.password, 10)
       updates.password = hashedPassword
     }
-    const user = await userRepository.updateByEmail(email, updates)
+    const user = await userRepository.updateByEmail(id, updates)
     logger.info('', {
       timestamp: new Date(),
       service: 'USER_CONTROLLER',
       action: 'UPDATE_USER_RES',
       type: 'INFO',
       message: 'User updated successfully',
-      log: { email, updates }
+      log: updates
     })
     res.status(200).json({ message: 'User updated successfully', user })
   } catch (error) {

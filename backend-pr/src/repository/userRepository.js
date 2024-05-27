@@ -13,10 +13,10 @@ class UserRepository {
     return await User.findById(id)
   }
 
-  async updateByEmail (email, updates) {
+  async updateByEmail (id, updates) {
     try {
       const user = await User.findOneAndUpdate(
-        { email },
+        { _id: id },
         { $set: updates },
         { new: true }
       )
