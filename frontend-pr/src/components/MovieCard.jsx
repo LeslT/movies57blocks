@@ -12,7 +12,13 @@ export default function MovieCard({movie, isFavorite}) {
         <Link className="text-2xl truncate font-black" >{movie.title}</Link>
       </div>
       <div>
-        <button>{isFavorite ? "Remove from Favorites" : "Add to Favorites"}</button>
+      <button
+          type="button"
+          className="bg-green-400 hover:bg-green-500 mt-5 w-full p-3 font-bold text-white text-lg uppercase"
+          onClick={()=>selectRecipe(drink.idDrink)}
+        >
+          {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+        </button>
       </div>
     </div>
   );
