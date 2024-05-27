@@ -3,7 +3,7 @@ import { isAxiosError } from 'axios'
 
 export async function createAccount(formData){
     try {
-        const url = '/create-account'
+        const url = 'auth/register'
         const { data } = await api.post(url, formData)
         return data
     } catch (error) {
@@ -15,7 +15,7 @@ export async function createAccount(formData){
 
 export async function authenticateUser(formData){
     try {
-        const url = '/login'
+        const url = 'auth/login'
         const { data } = await api.pos(url, formData)
         localStorage.setItem('AUTH_TOKEN', data)
         return data

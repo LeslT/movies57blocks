@@ -6,12 +6,12 @@ const updateUserByEmail = async (req, res) => {
   const updates = req.body
 
   if (updates.email) {
-    return res.status(400).json({ message: 'Email cannot be updated' })
+    return res.status(400).json({ error: 'Email cannot be updated' })
   }
 
   if (updates.password) {
     if (!validatePassword(updates.password)) {
-      return res.status(400).json({ message: 'Invalid password' })
+      return res.status(400).json({ error: 'Invalid password' })
     }
     const hashedPassword = await bcrypt.hash(updates.password, 10)
     updates.password = hashedPassword
@@ -21,7 +21,7 @@ const updateUserByEmail = async (req, res) => {
     const user = await userRepository.updateByEmail(email, updates)
     res.json(user)
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    res.status(500).json({ error: error.message })
   }
 }
 

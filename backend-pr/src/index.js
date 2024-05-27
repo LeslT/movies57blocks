@@ -4,10 +4,12 @@ import Db from './db/db.js'
 import authRoutes from './routes/authRoutes.js'
 import movieRoutes from './routes/movieRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import { corsConfig } from "./config/cors.js";
+import cors from 'cors'
 
 const app = express()
 const port = process.env.PORT || 0
-
+app.use(cors(corsConfig))
 app.use(express.json())
 app.use('/auth', authRoutes)
 app.use('/movies', movieRoutes)

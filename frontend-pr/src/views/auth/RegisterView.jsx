@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../../components/errorMessage";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { createAccount } from "../../api/AuthAPI";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterView() {
   
   const initialValues = {
-    name: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -13,9 +16,22 @@ export default function RegisterView() {
 
   const { register, handleSubmit, watch, reset, formState: { errors } } = useForm({ defaultValues: initialValues });
 
+  const { mutate } = useMutation({
+    mutationFn: createAccount,
+    onError: (error) => {
+        toast.error(error.message)
+    },
+    onSuccess: (data) => {
+        toast.success(data.message)
+        reset()
+    }
+  })
+
   const password = watch('password');
 
-  const handleRegister = (formData) => {}
+  const handleRegister = (formData) => {
+    mutate(formData)
+  }
 
   return (
     <>
@@ -64,8 +80,12 @@ export default function RegisterView() {
             {...register("password", {
               required: "Password is required",
               minLength: {
-                value: 8,
-                message: 'The Password must be at least 8 characters'
+                value: 10,
+                message: 'The Password must be at least 10 characters'
+              },
+              pattern: {
+                value: /^(?=.*[!@#?*\]])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{10,}$/,
+                message: 'Password must include at least one of these symbols: !, @, #, ?, ] and contain both uppercase and lowercase letters'
               }
             })}
           />
