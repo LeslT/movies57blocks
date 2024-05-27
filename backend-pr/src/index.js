@@ -4,7 +4,7 @@ import Db from './db/db.js'
 import authRoutes from './routes/authRoutes.js'
 import movieRoutes from './routes/movieRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import { corsConfig } from "./config/cors.js";
+import { corsConfig } from './config/cors.js'
 import cors from 'cors'
 
 const app = express()
