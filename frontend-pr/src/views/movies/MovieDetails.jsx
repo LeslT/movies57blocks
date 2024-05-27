@@ -1,18 +1,13 @@
-import { useState } from "react"
-import MovieCard from "../../components/MovieCard"
+import { useParams } from "react-router-dom";
+
 
 export default function MovieDetails() {
-  const [data , setData]  = useState([])
+  const params = useParams();
+  const movieId = params.movieId;
   return (
     <>
-    {
-      data && (
-        data.map( movie => 
-            <MovieCard/>
-          )
-      )
-    }
-      
+      <h1 className="text-6xl font-extrabold">Movie Details</h1>
+
     </>
   )
 }

@@ -8,7 +8,7 @@ export default function DashboardView() {
     queryKey: ["movies"],
     queryFn: getMovies,
   });
-  
+  console.log(data)
   return (
     <>
       <h1 className="text-6xl font-extrabold">Movies</h1>
