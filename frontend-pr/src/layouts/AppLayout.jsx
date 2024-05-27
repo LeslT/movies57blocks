@@ -1,10 +1,16 @@
-import { NavLink, Outlet } from "react-router-dom"
+import { NavLink, Outlet, Navigate  } from "react-router-dom"
 import Logo from "../components/Logo"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../hooks/useAuth";
 
 export default function AppLayout() {
-  return (
+  const { data, isError, isLoading } = useAuth()
+  if(isLoading) return 'Cargando...'
+  if(isError){
+    return <Navigate to='/login'/>
+  }
+  if(data) return (
     <div>
         <header className="bg-gray-800 py-5">
             <div className="mx-auto container px-5 -py-16">

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { createAccount } from "../../api/AuthAPI";
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterView() {
   

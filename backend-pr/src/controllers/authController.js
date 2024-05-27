@@ -52,8 +52,11 @@ const login = async (req, res) => {
 
   return res.status(200).json({ message: 'Login successful', token })
 }
-
+const user = async (req, res) => {
+ return res.json(req.user)
+}
 export default {
   register,
-  login
+  login,
+  user
 }
