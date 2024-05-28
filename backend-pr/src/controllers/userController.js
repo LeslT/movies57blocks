@@ -55,6 +55,15 @@ const updateUserByEmail = async (req, res) => {
       const hashedPassword = await bcrypt.hash(updates.password, 10)
       updates.password = hashedPassword
     }
+
+    if (updates.favorites) {
+      function hasDuplicates (array) {
+        return (new Set(array)).size !== array.length
+      }
+      if (hasDuplicates(updates.favorites)) {
+        return res.status(400).json({ error: 'The movie already exists in your favorites list' })
+      }
+    }
     const user = await userRepository.updateByEmail(id, updates)
     logger.info('', {
       timestamp: new Date(),

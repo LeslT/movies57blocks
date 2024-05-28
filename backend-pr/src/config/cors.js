@@ -1,6 +1,6 @@
 export const corsConfig = {
   origin: function (origin, callback) {
-    const whitelist = [process.env.FRONTEND_URL]
+    const whitelist = [process.env.FRONTEND_URL, process.env.APIGATEWAY_URL]
     if (process.argv[2] === '--api') {
       whitelist.push(undefined)
     }
