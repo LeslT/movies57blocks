@@ -3,9 +3,10 @@ import { Link, useRevalidator } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
 import { updateUser } from "../api/UserAPI";
+import { useQueryClient } from '@tanstack/react-query'
 
-export default function MovieCard({movie, isFavorite}) {
-  const { data: userId} = useAuth()
+export default function MovieCard({movie, isFavorite, userData}) {
+  const queryClient = useQueryClient()
 
   const { mutate } = useMutation({
     mutationFn: updateUser,
@@ -13,20 +14,26 @@ export default function MovieCard({movie, isFavorite}) {
         toast.error(error.message)
     },
     onSuccess: (data) => {
-        toast.success(data.message)
+        toast.success("Favorite List Updated")
+        queryClient.invalidateQueries({queryKey: ['favorites']})
+        queryClient.invalidateQueries({queryKey: ['user']})
     }
   })
-
-  const removeFromFavorites = () => {      
+  const removeFromFavorites = () => {    
+    const favoritesList = userData.user.favorites.filter(favorite => favorite.toString() !== movie.id.toString())
+    const updates = {"favorites": favoritesList}
     const data = {
-    movie,
-    userId
+    favorites : updates,
+    userData
   }
+
   mutate(data) }
-  const addToFavorites = (formData) => {  
+  const addToFavorites = () => {  
+    const favoritesList = [...userData.user.favorites, movie.id]
+    const updates = {"favorites": favoritesList}
     const data = {
-      movie,
-      userId
+      favorites: updates,
+      userData
     }
     mutate(data) 
   }

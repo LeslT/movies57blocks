@@ -159,7 +159,8 @@ const login = async (req, res) => {
 }
 
 const user = async (req, res) => {
-  return res.json(req.user)
+  const existingUser = await userRepository.findById(req.user.id)
+  return res.status(200).json({ user: existingUser })
 }
 export default {
   register,

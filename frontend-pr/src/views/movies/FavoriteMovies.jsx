@@ -2,17 +2,18 @@
 import MovieCard from "../../components/MovieCard";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../../hooks/useAuth";
-import { getFavorites } from "../../api/UserAPI";
+import { getFavorites, updateUser } from "../../api/UserAPI";
 
 
 export default function FavoriteMovies() {
-  const { data: userId} = useAuth()
+  const { data: user} = useAuth()
 
   const { data } = useQuery({
-    queryKey: ["favorites", userId],
-    queryFn: () => getFavorites(userId),
+    queryKey: ["favorites", user],
+    queryFn: () => getFavorites(user),
     retry: false
   });
+
 
   return (
     <>
@@ -20,7 +21,7 @@ export default function FavoriteMovies() {
       {data ? (
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 my-10 gap-10">
           {data.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} isFavorite={true}/>
+            <MovieCard key={movie.id} movie={movie} isFavorite={true} userData={user}/>
           ))}
         </div>
       ) : (
