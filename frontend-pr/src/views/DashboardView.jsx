@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../api/MovieAPI";
 import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
+import Spinner from "../components/Spinner/Spinner";
 
 export default function DashboardView() {
   const { data: userData } = useAuth();
@@ -18,6 +19,7 @@ export default function DashboardView() {
   const handleNext = () => {
     setCurrentPage(currentPage+1)
   }
+  if(isLoading) return <Spinner/>
 
   if(data) return (
     <>
