@@ -12,7 +12,6 @@ export default function MovieDetails() {
     queryFn: () => getMovieById(movieId),
     retry: false
 })
-console.log(data)
   if(data) return (
     <>
       <h1 className="text-6xl font-extrabold">Movie Details</h1>

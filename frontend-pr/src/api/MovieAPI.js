@@ -2,10 +2,10 @@
 import api from "../lib/axios";
 import { isAxiosError } from "axios";
 
-export async function getMovies() {
+export async function getMovies(page) {
     try {
-        const { data } = await api('/movies/list')
-        return data.movies.results
+        const { data } = await api(`/movies/list?page=${page}`)
+        return data.movies
     } catch (error) {
         if(isAxiosError(error) && error.response){
             throw new Error(error.response.data.error)
