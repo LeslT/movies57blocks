@@ -1,0 +1,48 @@
+service: my-express-app
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  timeout: 30
+  environment:
+    PORT: ${env:PORT}
+    MONGO_URI: ${env:MONGO_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+    MOVIE_BASE_URL: ${env:MOVIE_BASE_URL}
+    MOVIE_API_KEY: ${env:MOVIE_API_KEY}
+    FRONTEND_URL: ${env:FRONTEND_URL}
+    APIGATEWAY_URL: ${env:APIGATEWAY_URL}
+functions:
+  app:
+    handler: src/handler.handler
+    events:
+      - http:
+          path: /
+          method: any
+      - http:
+          path: '{proxy+}'
+          method: any
+
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+
+custom:
+  webpack:
+    webpackConfig: './webpack.config.cjs'
+    includeModules: true
+  dotenv:
+    path: .env
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'

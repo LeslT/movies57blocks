@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node src/index.js",
-    "dev:api": "node src/index.js --api"
+    "dev:api": "node src/local.js --api",
+    "deploy": "serverless deploy"
   },
   "keywords": [],
   "author": "",
@@ -21,10 +22,18 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0",
+    "serverless-http": "^3.2.0",
     "winston": "^3.13.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "babel-loader": "^9.1.3",
     "javascript": "^1.0.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-webpack": "^5.14.0",
+    "webpack": "^5.91.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
