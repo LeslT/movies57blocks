@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../hooks/useAuth";
 import { useQueryClient } from '@tanstack/react-query'
+import Spinner from "../components/Spinner/Spinner";
 
 
 export default function AppLayout() {
@@ -14,7 +15,7 @@ export default function AppLayout() {
     localStorage.removeItem('USER_EMAIL')
     queryClient.invalidateQueries({queryKey: ['user']})
   }
-  if(isLoading) return 'Cargando...'
+  if(isLoading) return <Spinner/>
   if(isError){
     return <Navigate to='/login'/>
   }

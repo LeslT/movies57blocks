@@ -7,7 +7,7 @@ import logger from '../lib/log.js'
 const updateUserByEmail = async (req, res) => {
   const { id } = req.params
   const updates = req.body
-
+  console.log(updates)
   try {
     logger.info('', {
       timestamp: new Date(),

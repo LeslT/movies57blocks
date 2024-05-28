@@ -14,7 +14,7 @@ export default function Router() {
                 <Route element={<AppLayout/>}>
                     <Route path='/' element={<DashboardView/>} index/>
                     <Route path='/favorites' element={<FavoriteMovies/>}/>
-                    <Route path='/details' element={<MovieDetails/>}/>
+                    <Route path='/details/:movieId' element={<MovieDetails/>}/>
                 </Route>
                 <Route element={<AuthLayout/>}>
                     <Route path='/login' element={<LoginView/>} />
