@@ -13,6 +13,7 @@ export default function DashboardView() {
     queryKey: ["movies", currentPage],
     queryFn: ()=> getMovies(currentPage),
   });
+  
   const handleBack = () => {
     setCurrentPage(currentPage-1)
   }
