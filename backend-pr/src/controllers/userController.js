@@ -26,7 +26,7 @@ const updateUserByEmail = async (req, res) => {
         message: 'id cannot be updated',
         log: updates
       })
-      return res.status(400).json({ error: 'Email cannot be updated' })
+      return res.status(400).json({ error: 'id cannot be updated' })
     }
     if (updates.email) {
       logger.info('', {

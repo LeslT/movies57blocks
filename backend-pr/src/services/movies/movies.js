@@ -38,7 +38,7 @@ const getDetailsFromApi = async (id) => {
     return response.data
   } catch (error) {
     console.error('Error fetching movies from TMDb:', error.message || error.stack)
-    throw new Error('Could not fetch movies')
+    throw error
   }
 }
 
