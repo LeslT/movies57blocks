@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "5e046b22-3300-4c89-8b29-c52703be599b",
+		"name": "movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19053418"
+	},
+	"item": [
+		{
+			"name": "cloud",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"juanitoperez@hotmail.com\",\r\n    \"password\": \"jUanitoPerez@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/auth/register",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"juanitoperez@hotmail.com\",\r\n    \"password\": \"jUanitoPerez@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/auth/login",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU1NDQ1NzVhM2U0N2MwYTUwN2I3ZTAiLCJpYXQiOjE3MTY4NjQ4NzUsImV4cCI6MTcxNjg2NjA3NX0.Vycv2AQcnb9D6YNleHtjRcur-Enu0ZbeJ4VsFcY1CX4"
+							},
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"favorites\": [\r\n        823464,\r\n        653346\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/users/665544575a3e47c0a507b7e0",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"665544575a3e47c0a507b7e0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMovies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU1NDQ1NzVhM2U0N2MwYTUwN2I3ZTAiLCJpYXQiOjE3MTY4NjQ4NzUsImV4cCI6MTcxNjg2NjA3NX0.Vycv2AQcnb9D6YNleHtjRcur-Enu0ZbeJ4VsFcY1CX4"
+							},
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/movies/list?page=2",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"movies",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMoviesById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU1NDQ1NzVhM2U0N2MwYTUwN2I3ZTAiLCJpYXQiOjE3MTY4NjUzMDcsImV4cCI6MTcxNjg2NjUwN30.w5h8OHZfr2pdiGak8LjGSWUhIFi8MfvmEvRMzXqb_uo"
+							},
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/movies/823464",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"movies",
+								"823464"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "823464",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFavorites Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU1NDQ1NzVhM2U0N2MwYTUwN2I3ZTAiLCJpYXQiOjE3MTY4NjUzMDcsImV4cCI6MTcxNjg2NjUwN30.w5h8OHZfr2pdiGak8LjGSWUhIFi8MfvmEvRMzXqb_uo"
+							},
+							{
+								"key": "Origin",
+								"value": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev"
+							}
+						],
+						"url": {
+							"raw": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev/users/favorites/665544575a3e47c0a507b7e0",
+							"protocol": "https",
+							"host": [
+								"tdk1r1bzgf",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"favorites",
+								"665544575a3e47c0a507b7e0"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "local",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"juanitoperez@hotmail.com\",\r\n    \"password\": \"jUanitoPerez@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"juanitoperez@hotmail.com\",\r\n    \"password\": \"jUanitoPerez@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU0ODZjMTM5MWExYjk0Nzg2YjQ2MWMiLCJpYXQiOjE3MTY4NDY3ODQsImV4cCI6MTcxNjg0Nzk4NH0.crq5eG3uaTvAg-bxDmLTj0KviOlF1kurpdg49GD3G1A"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"favorites\": [\r\n        823464,\r\n        653346,\r\n        786892\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/665486c1391a1b94786b461c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"665486c1391a1b94786b461c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMovies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU0ODZjMTM5MWExYjk0Nzg2YjQ2MWMiLCJpYXQiOjE3MTY4NDc2NjEsImV4cCI6MTcxNjg0ODg2MX0.krvznRLYr39pcKwCYZ995yfoQ0Mp58Sa6KasiMRfgVs"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/movies/list?page=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"movies",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMoviesById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU0ODZjMTM5MWExYjk0Nzg2YjQ2MWMiLCJpYXQiOjE3MTY4NDc5MzksImV4cCI6MTcxNjg0OTEzOX0.juzaRQz8THarhknJPWDXMUznBIGsDZamxsIyIrqZztU"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/movies/823464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"movies",
+								"823464"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "823464",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFavorites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU0ODZjMTM5MWExYjk0Nzg2YjQ2MWMiLCJpYXQiOjE3MTY4MTU1OTcsImV4cCI6MTcxNjgxNjc5N30.ThzKWbYFLELZ7Cr-eav7UF-mSKKWP4iWcBHalLOO3ew"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/users/favorites/juanitoperez@hotmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"favorites",
+								"juanitoperez@hotmail.com"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
