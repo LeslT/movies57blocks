@@ -1,3 +1,4 @@
+import React from 'react';
 import MovieCard from "../components/MovieCard";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../api/MovieAPI";
@@ -13,7 +14,7 @@ export default function DashboardView() {
     queryKey: ["movies", currentPage],
     queryFn: ()=> getMovies(currentPage),
   });
-  
+
   const handleBack = () => {
     setCurrentPage(currentPage-1)
   }

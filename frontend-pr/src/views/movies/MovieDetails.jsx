@@ -36,8 +36,8 @@ export default function MovieDetails() {
           <div className="flex flex-row gap-4 ">
             <p className="text-purple-950 text-bold text-2xl">Genres:</p>
             {data.movie.genres.map(genre => (
-              <div>
-                <p key={genre.id} >{genre.name},</p>
+              <div key={genre.id}>
+                <p  >{genre.name},</p>
               </div>
             ))}
           </div>

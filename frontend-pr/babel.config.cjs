@@ -1,4 +1,3 @@
-// babel.config.js
 module.exports = {
   presets: [
     [
@@ -10,5 +9,8 @@ module.exports = {
       }
     ],
     '@babel/preset-react'
+  ],
+  plugins: [
+    require('@babel/plugin-syntax-import-meta')
   ]
 };
