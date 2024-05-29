@@ -15,7 +15,7 @@
         "JWT_SECRET": "mySuperSecretKey123!",
         "MOVIE_BASE_URL": "https://api.themoviedb.org/3/movie",
         "MOVIE_API_KEY": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMGU1MGFkZmM2Y2I0ODk1ZTEzNTUyOWRiYjg5N2RmMCIsInN1YiI6IjY2NTJiMDY2OWU1ZTFhMjhlNGM2MjQzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vplhRoWqdbW0PqoJ0ZaeRKcxUJVTS9MdAw6V26ZrA8E",
-        "FRONTEND_URL": "http://localhost:5173",
+        "FRONTEND_URL": "https://movies-57blocks.netlify.app",
         "APIGATEWAY_URL": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev",
         "LOCAL_HOST": "http://localhost:4000"
       },
@@ -185,7 +185,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-express-app/dev/1716951910941-2024-05-29T03:05:10.941Z/my-express-app.zip"
+                "S3Key": "serverless/my-express-app/dev/1716959665512-2024-05-29T05:14:25.512Z/my-express-app.zip"
               },
               "Handler": "src/handler.handler",
               "Runtime": "nodejs18.x",
@@ -199,7 +199,7 @@
                   "JWT_SECRET": "mySuperSecretKey123!",
                   "MOVIE_BASE_URL": "https://api.themoviedb.org/3/movie",
                   "MOVIE_API_KEY": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMGU1MGFkZmM2Y2I0ODk1ZTEzNTUyOWRiYjg5N2RmMCIsInN1YiI6IjY2NTJiMDY2OWU1ZTFhMjhlNGM2MjQzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vplhRoWqdbW0PqoJ0ZaeRKcxUJVTS9MdAw6V26ZrA8E",
-                  "FRONTEND_URL": "http://localhost:5173",
+                  "FRONTEND_URL": "https://movies-57blocks.netlify.app",
                   "APIGATEWAY_URL": "https://tdk1r1bzgf.execute-api.us-east-1.amazonaws.com/dev",
                   "LOCAL_HOST": "http://localhost:4000"
                 }
@@ -215,14 +215,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersion1umtAvrynukfQEOfBmbBTZNa8Ancpgkg09sLyZfQ": {
+          "AppLambdaVersionmkcdO3TTrXcXBmF974pHP4M14asaVctOtkeT8nP854": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "OaE9OJPcFK+EU/hHuWEms0G05mBeylDaJkZtYslmZr4="
+              "CodeSha256": "/1d9JtpGwQrJ14RLw+vS3Fpz4Grlfy7iNlB01OmvlmQ="
             }
           },
           "ApiGatewayRestApi": {
@@ -347,7 +347,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1716951864153": {
+          "ApiGatewayDeployment1716959630366": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -423,7 +423,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersion1umtAvrynukfQEOfBmbBTZNa8Ancpgkg09sLyZfQ"
+              "Ref": "AppLambdaVersionmkcdO3TTrXcXBmF974pHP4M14asaVctOtkeT8nP854"
             },
             "Export": {
               "Name": "sls-my-express-app-dev-AppLambdaFunctionQualifiedArn"
@@ -582,7 +582,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersion1umtAvrynukfQEOfBmbBTZNa8Ancpgkg09sLyZfQ"
+        "versionLogicalId": "AppLambdaVersionmkcdO3TTrXcXBmF974pHP4M14asaVctOtkeT8nP854"
       }
     },
     "resources": {
@@ -628,7 +628,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/my-express-app/dev/1716951910941-2024-05-29T03:05:10.941Z",
+    "artifactDirectoryName": "serverless/my-express-app/dev/1716959665512-2024-05-29T05:14:25.512Z",
     "artifact": ""
   }
 }
