@@ -8,7 +8,7 @@
     "dev": "node src/index.js",
     "dev:api": "node src/local.js --api",
     "deploy": "serverless deploy",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage --silent"
   },
   "keywords": [],
   "author": "",
