@@ -2,7 +2,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import DashboardView from '../views/DashboardView.jsx'
 import { useQuery } from "@tanstack/react-query";
-
+// Mock de import.meta.env
+jest.mock('vite', () => {
+    return {
+      importMetaEnv: {
+        VITE_API_URL: 'http://your-api-url.com'
+      }
+    };
+  });
 jest.mock('@tanstack/react-query');
 jest.mock('../components/MovieCard.jsx', () => {
     return () => <div>Mocked Child Component</div>;
