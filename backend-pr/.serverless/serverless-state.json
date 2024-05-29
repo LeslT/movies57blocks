@@ -185,7 +185,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-express-app/dev/1716864017714-2024-05-28T02:40:17.714Z/my-express-app.zip"
+                "S3Key": "serverless/my-express-app/dev/1716943296578-2024-05-29T00:41:36.578Z/my-express-app.zip"
               },
               "Handler": "src/handler.handler",
               "Runtime": "nodejs18.x",
@@ -215,14 +215,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersion2LVOtyIK4abBcyE0Vn665gXkIkfkLKCBQKfsbaEOE": {
+          "AppLambdaVersionXFsHCTI4ezvdXIWcNnwMRNR7pu3m6THDzgp6KhMMdXw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "rv9iaGPRYNGaEmWevV7xwjItRSoQ1s7x2n61uFB21qQ="
+              "CodeSha256": "yxGXhAjZMMsIz8GHrYopENRw+foA1C8MtZZDRxWP414="
             }
           },
           "ApiGatewayRestApi": {
@@ -347,7 +347,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1716864005551": {
+          "ApiGatewayDeployment1716943282853": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -423,7 +423,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersion2LVOtyIK4abBcyE0Vn665gXkIkfkLKCBQKfsbaEOE"
+              "Ref": "AppLambdaVersionXFsHCTI4ezvdXIWcNnwMRNR7pu3m6THDzgp6KhMMdXw"
             },
             "Export": {
               "Name": "sls-my-express-app-dev-AppLambdaFunctionQualifiedArn"
@@ -582,7 +582,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersion2LVOtyIK4abBcyE0Vn665gXkIkfkLKCBQKfsbaEOE"
+        "versionLogicalId": "AppLambdaVersionXFsHCTI4ezvdXIWcNnwMRNR7pu3m6THDzgp6KhMMdXw"
       }
     },
     "resources": {
@@ -628,7 +628,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/my-express-app/dev/1716864017714-2024-05-28T02:40:17.714Z",
+    "artifactDirectoryName": "serverless/my-express-app/dev/1716943296578-2024-05-29T00:41:36.578Z",
     "artifact": ""
   }
 }
