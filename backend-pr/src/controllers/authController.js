@@ -162,8 +162,14 @@ const user = async (req, res) => {
   const existingUser = await userRepository.findById(req.user.id)
   return res.status(200).json({ user: existingUser })
 }
+
+const userAuth = async (req, res) => {
+  return res.json(req.user)
+}
+
 export default {
   register,
   login,
-  user
+  user,
+  userAuth
 }

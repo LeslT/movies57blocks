@@ -1,12 +1,17 @@
 
 import MovieCard from "../../components/MovieCard";
 import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "../../hooks/useAuth";
-import { getFavorites, updateUser } from "../../api/UserAPI";
+import { getFavorites } from "../../api/UserAPI";
+import { getUser } from "../../api/AuthAPI";
 
 
 export default function FavoriteMovies() {
-  const { data: user} = useAuth()
+    const {data: user} = useQuery({
+    queryKey: ['user'],
+    queryFn: getUser,
+    retry: false,
+    refetchOnWindowFocus: false
+})
 
   const { data } = useQuery({
     queryKey: ["favorites", user],

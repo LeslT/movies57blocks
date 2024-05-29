@@ -9,11 +9,11 @@ import Spinner from "../components/Spinner/Spinner";
 
 export default function AppLayout() {
   const { data, isError, isLoading } = useAuth()
+
   const queryClient = useQueryClient()
   const logout = () => {
     localStorage.removeItem('AUTH_TOKEN')
-    localStorage.removeItem('USER_EMAIL')
-    queryClient.invalidateQueries({queryKey: ['user']})
+    queryClient.invalidateQueries({queryKey: ['userauth']})
   }
   if(isLoading) return <Spinner/>
   if(isError){

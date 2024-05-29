@@ -1,10 +1,10 @@
-import { getUser } from "../api/AuthAPI";
+import { getUserAuth } from "../api/AuthAPI";
 import { useQuery } from "@tanstack/react-query";
 
 export const useAuth = () => {
     const {data, isError, isLoading } = useQuery({
-        queryKey: ['user'],
-        queryFn: getUser,
+        queryKey: ['userauth'],
+        queryFn: getUserAuth,
         retry: false,
         refetchOnWindowFocus: false
     })

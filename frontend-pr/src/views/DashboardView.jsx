@@ -2,12 +2,19 @@ import React from 'react';
 import MovieCard from "../components/MovieCard";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../api/MovieAPI";
-import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 import Spinner from "../components/Spinner/Spinner";
+import { getUser } from '../api/AuthAPI';
 
 export default function DashboardView() {
-  const { data: userData } = useAuth();
+
+  const {data: userData, isLoading: userLoading } = useQuery({
+    queryKey: ['user'],
+    queryFn: getUser,
+    retry: false,
+    refetchOnWindowFocus: false
+})
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading } = useQuery({
