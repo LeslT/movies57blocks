@@ -12,8 +12,11 @@ export default function AppLayout() {
 
   const queryClient = useQueryClient()
   const logout = () => {
+    window.location.href = '/login'
     localStorage.removeItem('AUTH_TOKEN')
     queryClient.invalidateQueries({queryKey: ['userauth']})
+    queryClient.invalidateQueries({queryKey: ['user']})
+    queryClient.invalidateQueries({queryKey: ['movies']})
   }
   if(isLoading) return <Spinner/>
   if(isError){

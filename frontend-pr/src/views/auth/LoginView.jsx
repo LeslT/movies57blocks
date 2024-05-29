@@ -21,10 +21,8 @@ export default function LoginView() {
         toast.error(error.message)
     },
     onSuccess: (data) => {
-        // toast.success(data.message)
-        setTimeout(()=>{
+        toast.success(data.message)
           navigate('/')
-        }, 2000)
     }
   })
 
