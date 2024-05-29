@@ -1,5 +1,5 @@
-// jest.config.cjs
 require('dotenv').config();
+process.env.NODE_ENV = 'test';
 
 module.exports = {
   transform: {
@@ -8,11 +8,23 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'jsx', 'css'],
-  setupFiles: ['<rootDir>/src/setupTests.js'],
+  setupFiles: ['<rootDir>/jest.setup.js'],
   extensionsToTreatAsEsm: ['.jsx'],
   globals: {
     'babel-jest': {
       useESM: true
     }
-  }
+  },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!src/**/index.js',
+    '!src/**/*.{test,spec}.js',
+    '!**/src/handler.js',
+    '!**/src/local.js',
+    '!*/src/db/*',
+    '!*/src/config/*',
+    '!*/src/repository/*',
+    '!*/src/routes/*'
+  ],
 };
