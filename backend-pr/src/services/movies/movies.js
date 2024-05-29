@@ -1,5 +1,4 @@
 import axios from 'axios'
-import e from 'cors'
 const API_KEY = process.env.MOVIE_API_KEY || ''
 const BASE_URL = process.env.MOVIE_BASE_URL || ''
 
