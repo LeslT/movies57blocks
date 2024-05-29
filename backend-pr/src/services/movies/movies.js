@@ -1,4 +1,5 @@
 import axios from 'axios'
+import e from 'cors'
 const API_KEY = process.env.MOVIE_API_KEY || ''
 const BASE_URL = process.env.MOVIE_BASE_URL || ''
 
@@ -38,7 +39,7 @@ const getDetailsFromApi = async (id) => {
     return response.data
   } catch (error) {
     console.error('Error fetching movies from TMDb:', error.message || error.stack)
-    throw new Error('Could not fetch movies')
+    throw error
   }
 }
 
